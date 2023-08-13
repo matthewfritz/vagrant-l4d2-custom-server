@@ -1,0 +1,4 @@
+# we are going to be using CentOS 7 for this
+Vagrant.configure("2") do |config|
+  config.vm.box = "centos/7"
+end
