@@ -10,6 +10,10 @@ Vagrant.configure("2") do |config|
     v.name = "l4d2-custom"
     v.customize ["modifyvm", :id, "--memory", "4096"] # Memory: 4GB
     v.customize ["modifyvm", :id, "--cpus", "4"] # Processor cores: 4
+
+    # VirtualBox guest additions can be weird with CentOS 7 so we will allow a kernel upgrade
+    # https://github.com/dotless-de/vagrant-vbguest/issues/399#issuecomment-749685700
+    config.vbguest.installer_options = { allow_kernel_upgrade: true }
   end
 
   # UNCOMMENT THIS TO OPEN UP THE SERVER TO THE PUBLIC
@@ -46,5 +50,5 @@ Vagrant.configure("2") do |config|
 
   # run the base provisioner first, then run the Left 4 Dead 2 provisioner
   config.vm.provision "shell", path: "provision/provision-base.sh"
-  config.vm.provision "shell", path: "provision/provision-game-l4d2.sh"
+  config.vm.provision "shell", path: "provision/provision-game-l4d2.sh", privileged: false # use ssh ("vagrant") user, not root
 end
