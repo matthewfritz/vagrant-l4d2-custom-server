@@ -4,7 +4,7 @@
 //
 @ShutdownOnFailedCommand 1
 @NoPromptForPassword 1
-force_install_dir ~/l4d2_server
+force_install_dir /home/vagrant/l4d2_server
 login anonymous
 app_update 222860 validate
 quit
