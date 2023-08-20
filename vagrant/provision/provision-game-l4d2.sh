@@ -13,6 +13,8 @@ output_line() {
 
 output_line "Beginning Left 4 Dead 2 provisioning..."
 
+# On CentOS 7, steamcmd isn't within yum by default so we will install it manually
+# https://www.vultr.com/docs/how-to-install-steamcmd-on-your-vps#3__Install_Steam
 output_line "Installing steamcmd..."
 wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
 tar xf steamcmd_linux.tar.gz
@@ -29,7 +31,7 @@ echo "${STEAMCMD_HOME}/steamcmd.sh +runscript ${STEAMCMD_MOUNT}/update_l4d2.txt"
 chmod +x ${STEAMCMD_HOME}/update_l4d2.sh
 output_line "Finished creating update script"
 
-output_line "Running steamcmd with the custom update script..."
+output_line "Running steamcmd with the custom update script to download and install the Left 4 Dead 2 server..."
 ./steamcmd.sh +runscript ${STEAMCMD_MOUNT}/update_l4d2.txt
 output_line "Finished running steamcmd"
 
