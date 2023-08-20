@@ -48,7 +48,7 @@ output_line "Finished downloading and installing Metamod"
 output_line "Downloading and installing Sourcemod..."
 wget https://sm.alliedmods.net/smdrop/1.11/sourcemod-1.11.0-git6936-linux.tar.gz
 tar xf sourcemod-1.11.0-git6936-linux.tar.gz
-mv ${STEAMCMD_HOME}/addons/metamod/* ${STEAMCMD_L4D2_DIR}/left4dead2/addons
+mv ${STEAMCMD_HOME}/addons/metamod/* ${STEAMCMD_L4D2_DIR}/left4dead2/addons/metamod
 mv ${STEAMCMD_HOME}/addons/sourcemod ${STEAMCMD_L4D2_DIR}/left4dead2/addons
 rm -rf ${STEAMCMD_HOME}/addons
 output_line "Finished downloading and installing Sourcemod"
