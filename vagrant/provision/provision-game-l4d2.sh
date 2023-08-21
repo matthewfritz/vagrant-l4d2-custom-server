@@ -53,6 +53,10 @@ mv ${STEAMCMD_HOME}/addons/sourcemod ${STEAMCMD_L4D2_DIR}/left4dead2/addons
 rm -rf ${STEAMCMD_HOME}/addons
 output_line "Finished downloading and installing Sourcemod"
 
+output_line "Adding Sourcemod admins..."
+cat ${STEAMCMD_MOUNT}/sourcemod/admins_simple_lines.ini >> ${STEAMCMD_L4D2_DIR}/left4dead2/addons/sourcemod/configs/admins_simple.ini
+output_line "Finished adding Sourcemod admins"
+
 # https://github.com/SmartlyDressedGames/Unturned-3.x-Community/issues/2305#issuecomment-785075753
 output_line "Making symlink to steamclient.so..."
 mkdir -p ${STEAMCMD_HOME}/.steam/sdk32
