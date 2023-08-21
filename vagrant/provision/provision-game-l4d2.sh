@@ -51,6 +51,8 @@ tar xf sourcemod-1.11.0-git6936-linux.tar.gz
 mv ${STEAMCMD_HOME}/addons/metamod/* ${STEAMCMD_L4D2_DIR}/left4dead2/addons/metamod
 mv ${STEAMCMD_HOME}/addons/sourcemod ${STEAMCMD_L4D2_DIR}/left4dead2/addons
 rm -rf ${STEAMCMD_HOME}/addons
+mv ${STEAMCMD_HOME}/cfg/sourcemod/* ${STEAMCMD_L4D2_DIR}/left4dead2/cfg/sourcemod
+rm -rf ${STEAMCMD_HOME}/cfg
 output_line "Finished downloading and installing Sourcemod"
 
 output_line "Adding Sourcemod admins..."
