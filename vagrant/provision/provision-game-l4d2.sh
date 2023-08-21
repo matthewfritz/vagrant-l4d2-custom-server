@@ -22,18 +22,23 @@ tar xf steamcmd_linux.tar.gz
 ./steamcmd.sh +quit
 output_line "Finished installing steamcmd"
 
-output_line "Creating Left 4 Dead 2 server startup script..."
-echo "${STEAMCMD_L4D2_DIR}/srcds_run -console -game left4dead2 -port ${STEAMCMD_PORT} -maxplayers 8 +exec server.cfg +map ${STEAMCMD_MAP_START}" > ${STEAMCMD_HOME}/start_l4d2.sh
-chmod +x ${STEAMCMD_HOME}/start_l4d2.sh
-output_line "Finished creating startup script"
-
-output_line "Creating Left 4 Dead 2 server update script..."
-echo "${STEAMCMD_HOME}/steamcmd.sh +runscript ${STEAMCMD_MOUNT}/update_l4d2.txt" > ${STEAMCMD_HOME}/update_l4d2.sh
-chmod +x ${STEAMCMD_HOME}/update_l4d2.sh
-output_line "Finished creating update script"
+output_line "Creating steamcmd update script for the Left 4 Dead 2 server..."
+cat <<STEAMCMD_UPDATE > ${STEAMCMD_HOME}/steamcmd_update_l4d2.txt
+// steamcmd_update_l4d2.txt
+// https://developer.valvesoftware.com/wiki/Dedicated_Servers_List
+// L4D2 app ID: 222860
+//
+@ShutdownOnFailedCommand 1
+@NoPromptForPassword 1
+force_install_dir ${STEAMCMD_L4D2_DIR}
+login anonymous
+app_update 222860 validate
+quit
+STEAMCMD_UPDATE
+output_line "Finished creating steamcmd update script"
 
 output_line "Running steamcmd with the custom update script to download and install the Left 4 Dead 2 server..."
-./steamcmd.sh +runscript ${STEAMCMD_MOUNT}/update_l4d2.txt
+./steamcmd.sh +runscript ${STEAMCMD_HOME}/steamcmd_update_l4d2.txt
 output_line "Finished running steamcmd"
 
 # https://wiki.alliedmods.net/Installing_Metamod:Source
@@ -68,5 +73,15 @@ output_line "Finished making symlink to steamclient.so"
 output_line "Making symlink to L4D2 server.cfg file..."
 ln -s ${STEAMCMD_MOUNT}/l4d2_server.cfg ${STEAMCMD_L4D2_DIR}/left4dead2/cfg/server.cfg
 output_line "Finished making symlink to server.cfg"
+
+output_line "Creating Left 4 Dead 2 server startup script..."
+echo "${STEAMCMD_L4D2_DIR}/srcds_run -console -game left4dead2 -port ${STEAMCMD_PORT} -maxplayers 4 +maxplayers 4 +exec server.cfg +map ${STEAMCMD_MAP_START}" > ${STEAMCMD_HOME}/start_l4d2.sh
+chmod +x ${STEAMCMD_HOME}/start_l4d2.sh
+output_line "Finished creating startup script"
+
+output_line "Creating Left 4 Dead 2 server update script..."
+echo "${STEAMCMD_HOME}/steamcmd.sh +runscript ${STEAMCMD_HOME}/steamcmd_update_l4d2.txt" > ${STEAMCMD_HOME}/update_l4d2.sh
+chmod +x ${STEAMCMD_HOME}/update_l4d2.sh
+output_line "Finished creating update script"
 
 output_line "Finished Left 4 Dead 2 provisioning" 
