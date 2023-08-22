@@ -108,4 +108,4 @@ echo "${STEAMCMD_HOME}/steamcmd.sh +runscript ${STEAMCMD_HOME}/steamcmd_update_l
 chmod +x ${STEAMCMD_HOME}/update_l4d2.sh
 output_line "Finished creating update script"
 
-output_line "Finished Left 4 Dead 2 provisioning" 
+output_line "Finished Left 4 Dead 2 provisioning"
