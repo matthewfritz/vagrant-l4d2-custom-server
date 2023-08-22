@@ -8,6 +8,7 @@ STEAMCMD_PORT="27020"
 STEAMCMD_HOME="/home/vagrant"
 STEAMCMD_L4D2_DIR="${STEAMCMD_HOME}/l4d2_server"
 L4D2_GENERATED_SERVER_CFG="${STEAMCMD_HOME}/l4d2_server_generated.cfg"
+L4D2_SRCDS_MAX_PLAYERS=4
 
 # GitHub LFS mirror of the necessary dependencies so we can provision in a consistent way and not worry about
 # our requisite configs, mods, etc. disappearing suddenly and breaking our server
@@ -103,7 +104,7 @@ ln -s ${L4D2_GENERATED_SERVER_CFG} ${STEAMCMD_L4D2_DIR}/left4dead2/cfg/server.cf
 output_line "Finished making symlink to server.cfg"
 
 output_line "Creating Left 4 Dead 2 server startup script..."
-echo "${STEAMCMD_L4D2_DIR}/srcds_run -console -game left4dead2 -port ${STEAMCMD_PORT} -maxplayers 4 +maxplayers 4 +exec server.cfg +map ${STEAMCMD_MAP_START}" > ${STEAMCMD_HOME}/start_l4d2.sh
+echo "${STEAMCMD_L4D2_DIR}/srcds_run -console -game left4dead2 -port ${STEAMCMD_PORT} -maxplayers ${L4D2_SRCDS_MAX_PLAYERS} +maxplayers ${L4D2_SRCDS_MAX_PLAYERS} +exec server.cfg +map ${STEAMCMD_MAP_START}" > ${STEAMCMD_HOME}/start_l4d2.sh
 chmod +x ${STEAMCMD_HOME}/start_l4d2.sh
 output_line "Finished creating startup script"
 
