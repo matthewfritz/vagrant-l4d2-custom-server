@@ -7,6 +7,7 @@ STEAMCMD_MAP_START="c2m1_highway"
 STEAMCMD_PORT="27020"
 STEAMCMD_HOME="/home/vagrant"
 STEAMCMD_L4D2_DIR="${STEAMCMD_HOME}/l4d2_server"
+L4D2_GENERATED_SERVER_CFG="${STEAMCMD_HOME}/l4d2_server_generated.cfg"
 
 output_line() {
     echo "[L4D2] $1"
@@ -70,8 +71,31 @@ mkdir -p ${STEAMCMD_HOME}/.steam/sdk32
 ln -s ${STEAMCMD_HOME}/linux32/steamclient.so ${STEAMCMD_HOME}/.steam/sdk32/steamclient.so
 output_line "Finished making symlink to steamclient.so"
 
+output_line "Creating script to generate the L4D2 server.cfg file..."
+cat <<SERVERCFGSCRIPT > ${STEAMCMD_HOME}/generate_l4d2_server_cfg.sh
+#! /bin/bash
+
+SERVER_TEMPLATE_DIR="${STEAMCMD_MOUNT}/srcds/cfg/server-cfg-template"
+GENERATED_FILE="${L4D2_GENERATED_SERVER_CFG}"
+
+# blank the ${L4D2_GENERATED_SERVER_CFG} file and then generate it
+>\${GENERATED_FILE}
+for filename in \${SERVER_TEMPLATE_DIR}/*.cfg
+do
+   cat \$filename | tr -d '\r' >> \${GENERATED_FILE}
+   echo >> \${GENERATED_FILE}
+   echo >> \${GENERATED_FILE}
+done
+SERVERCFGSCRIPT
+chmod +x ${STEAMCMD_HOME}/generate_l4d2_server_cfg.sh
+output_line "Finished creating script to generate the L4D2 server.cfg file"
+
+output_line "Generating ${L4D2_GENERATED_SERVER_CFG} file..."
+${STEAMCMD_HOME}/generate_l4d2_server_cfg.sh
+output_line "Finished generating ${L4D2_GENERATED_SERVER_CFG} file"
+
 output_line "Making symlink to L4D2 server.cfg file..."
-ln -s ${STEAMCMD_MOUNT}/srcds/l4d2_server.cfg ${STEAMCMD_L4D2_DIR}/left4dead2/cfg/server.cfg
+ln -s ${L4D2_GENERATED_SERVER_CFG} ${STEAMCMD_L4D2_DIR}/left4dead2/cfg/server.cfg
 output_line "Finished making symlink to server.cfg"
 
 output_line "Creating Left 4 Dead 2 server startup script..."
