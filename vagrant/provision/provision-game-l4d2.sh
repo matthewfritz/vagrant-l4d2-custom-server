@@ -2,7 +2,7 @@
 
 # Left 4 Dead 2 provisioning
 
-STEAMCMD_MOUNT="/mnt/data/steamcmd"
+STEAMCMD_MOUNT="/mnt/data/left4dead2"
 STEAMCMD_MAP_START="c2m1_highway"
 STEAMCMD_PORT="27020"
 STEAMCMD_HOME="/home/vagrant"
@@ -71,7 +71,7 @@ ln -s ${STEAMCMD_HOME}/linux32/steamclient.so ${STEAMCMD_HOME}/.steam/sdk32/stea
 output_line "Finished making symlink to steamclient.so"
 
 output_line "Making symlink to L4D2 server.cfg file..."
-ln -s ${STEAMCMD_MOUNT}/l4d2_server.cfg ${STEAMCMD_L4D2_DIR}/left4dead2/cfg/server.cfg
+ln -s ${STEAMCMD_MOUNT}/srcds/l4d2_server.cfg ${STEAMCMD_L4D2_DIR}/left4dead2/cfg/server.cfg
 output_line "Finished making symlink to server.cfg"
 
 output_line "Creating Left 4 Dead 2 server startup script..."
