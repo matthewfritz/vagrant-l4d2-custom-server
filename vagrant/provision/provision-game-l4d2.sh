@@ -9,6 +9,10 @@ STEAMCMD_HOME="/home/vagrant"
 STEAMCMD_L4D2_DIR="${STEAMCMD_HOME}/l4d2_server"
 L4D2_GENERATED_SERVER_CFG="${STEAMCMD_HOME}/l4d2_server_generated.cfg"
 
+# GitHub LFS mirror of the necessary dependencies so we can provision in a consistent way and not worry about
+# our requisite configs, mods, etc. disappearing suddenly and breaking our server
+DEPENDENCY_BASE_URL="https://github.com/matthewfritz/l4d2-custom-server-dependencies/blob/master"
+
 output_line() {
     echo "[L4D2] $1"
 }
@@ -18,7 +22,7 @@ output_line "Beginning Left 4 Dead 2 provisioning..."
 # On CentOS 7, steamcmd isn't within yum by default so we will install it manually
 # https://www.vultr.com/docs/how-to-install-steamcmd-on-your-vps#3__Install_Steam
 output_line "Installing steamcmd..."
-wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
+wget ${DEPENDENCY_BASE_URL}/common/steamcmd_linux.tar.gz
 tar xf steamcmd_linux.tar.gz
 ./steamcmd.sh +quit
 output_line "Finished installing steamcmd"
@@ -44,7 +48,7 @@ output_line "Finished running steamcmd"
 
 # https://wiki.alliedmods.net/Installing_Metamod:Source
 output_line "Downloading and installing Metamod..."
-wget https://mms.alliedmods.net/mmsdrop/1.11/mmsource-1.11.0-git1148-linux.tar.gz
+wget ${DEPENDENCY_BASE_URL}/common/mmsource-1.11.0-git1148-linux.tar.gz
 tar xf mmsource-1.11.0-git1148-linux.tar.gz
 mv ${STEAMCMD_HOME}/addons/* ${STEAMCMD_L4D2_DIR}/left4dead2/addons
 rmdir ${STEAMCMD_HOME}/addons
@@ -52,7 +56,7 @@ output_line "Finished downloading and installing Metamod"
 
 # https://wiki.alliedmods.net/Installing_SourceMod
 output_line "Downloading and installing Sourcemod..."
-wget https://sm.alliedmods.net/smdrop/1.11/sourcemod-1.11.0-git6936-linux.tar.gz
+wget ${DEPENDENCY_BASE_URL}/common/sourcemod-1.11.0-git6936-linux.tar.gz
 tar xf sourcemod-1.11.0-git6936-linux.tar.gz
 mv ${STEAMCMD_HOME}/addons/metamod/* ${STEAMCMD_L4D2_DIR}/left4dead2/addons/metamod
 mv ${STEAMCMD_HOME}/addons/sourcemod ${STEAMCMD_L4D2_DIR}/left4dead2/addons
