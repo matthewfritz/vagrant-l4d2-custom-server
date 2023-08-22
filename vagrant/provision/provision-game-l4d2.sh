@@ -10,9 +10,9 @@ STEAMCMD_L4D2_DIR="${STEAMCMD_HOME}/l4d2_server"
 L4D2_GENERATED_SERVER_CFG="${STEAMCMD_HOME}/l4d2_server_generated.cfg"
 L4D2_SRCDS_MAX_PLAYERS=4
 
-# GitHub LFS mirror of the necessary dependencies so we can provision in a consistent way and not worry about
+# GitHub mirror of the necessary dependencies so we can provision in a consistent way and not worry about
 # our requisite configs, mods, etc. disappearing suddenly and breaking our server
-DEPENDENCY_BASE_URL="https://github.com/matthewfritz/l4d2-custom-server-dependencies/blob/master"
+DEPENDENCY_BASE_URL="https://github.com/matthewfritz/l4d2-custom-server-dependencies/raw/master"
 
 output_line() {
     echo "[L4D2] $1"
