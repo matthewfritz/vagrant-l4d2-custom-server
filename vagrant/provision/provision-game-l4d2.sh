@@ -8,6 +8,7 @@ STEAMCMD_PORT="27020"
 STEAMCMD_HOME="/home/vagrant"
 STEAMCMD_L4D2_DIR="${STEAMCMD_HOME}/l4d2_server"
 STEAMCMD_L4D2_ADDONS_DIR="${STEAMCMD_L4D2_DIR}/left4dead2/addons"
+STEAMCMD_L4D2_CFG_DIR="${STEAMCMD_L4D2_DIR}/left4dead2/cfg"
 STEAMCMD_L4D2_METAMODMOD_DIR="${STEAMCMD_L4D2_ADDONS_DIR}/metamod"
 STEAMCMD_L4D2_SOURCEMOD_DIR="${STEAMCMD_L4D2_ADDONS_DIR}/sourcemod"
 L4D2_GENERATED_SERVER_CFG="${STEAMCMD_HOME}/l4d2_server_generated.cfg"
@@ -29,6 +30,7 @@ output_line "Installing steamcmd..."
 wget ${DEPENDENCY_BASE_URL}/common/steamcmd_linux.tar.gz
 tar xf steamcmd_linux.tar.gz
 ./steamcmd.sh +quit
+rm steamcmd_linux.tar.gz
 output_line "Finished installing steamcmd"
 
 output_line "Creating steamcmd update script for the Left 4 Dead 2 server..."
@@ -52,21 +54,24 @@ output_line "Finished running steamcmd"
 
 # https://wiki.alliedmods.net/Installing_Metamod:Source
 output_line "Downloading and installing Metamod..."
+mkdir metamod
 wget ${DEPENDENCY_BASE_URL}/common/mmsource-1.11.0-git1148-linux.tar.gz
-tar xf mmsource-1.11.0-git1148-linux.tar.gz
-mv ${STEAMCMD_HOME}/addons/* ${STEAMCMD_L4D2_ADDONS_DIR}
-rmdir ${STEAMCMD_HOME}/addons
+tar xf mmsource-1.11.0-git1148-linux.tar.gz -C metamod
+mv ${STEAMCMD_HOME}/metamod/addons/* ${STEAMCMD_L4D2_ADDONS_DIR}
+rm -rf ${STEAMCMD_HOME}/metamod
+rm mmsource-1.11.0-git1148-linux.tar.gz
 output_line "Finished downloading and installing Metamod"
 
 # https://wiki.alliedmods.net/Installing_SourceMod
 output_line "Downloading and installing Sourcemod..."
+mkdir sourcemod
 wget ${DEPENDENCY_BASE_URL}/common/sourcemod-1.11.0-git6936-linux.tar.gz
-tar xf sourcemod-1.11.0-git6936-linux.tar.gz
-mv ${STEAMCMD_HOME}/addons/metamod/* ${STEAMCMD_L4D2_METAMODMOD_DIR}
-mv ${STEAMCMD_HOME}/addons/sourcemod ${STEAMCMD_L4D2_ADDONS_DIR}
-rm -rf ${STEAMCMD_HOME}/addons
-mv ${STEAMCMD_HOME}/cfg/sourcemod/* ${STEAMCMD_L4D2_DIR}/left4dead2/cfg/sourcemod
-rm -rf ${STEAMCMD_HOME}/cfg
+tar xf sourcemod-1.11.0-git6936-linux.tar.gz -C sourcemod
+mv ${STEAMCMD_HOME}/sourcemod/addons/metamod/* ${STEAMCMD_L4D2_METAMODMOD_DIR}
+mv ${STEAMCMD_HOME}/sourcemod/addons/sourcemod ${STEAMCMD_L4D2_ADDONS_DIR}
+mv ${STEAMCMD_HOME}/sourcemod/cfg/sourcemod/* ${STEAMCMD_L4D2_CFG_DIR}/sourcemod
+rm -rf ${STEAMCMD_HOME}/sourcemod
+rm sourcemod-1.11.0-git6936-linux.tar.gz
 output_line "Finished downloading and installing Sourcemod"
 
 # https://forums.alliedmods.net/showthread.php?t=91132
@@ -79,6 +84,16 @@ mv ${STEAMCMD_HOME}/left4downtown/gamedata/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/game
 rm -rf ${STEAMCMD_HOME}/left4downtown
 rm left4downtown-0.4.6.0-l4d2.zip
 output_line "Finished downloading and installing Left 4 Downtown extension for Sourcemod"
+
+# https://forums.alliedmods.net/showthread.php?p=830069
+output_line "Downloading and installing SuperVersus plugin for Sourcemod..."
+wget ${DEPENDENCY_BASE_URL}/common/superversus-1.5.4-l4d2.zip
+unzip superversus-1.5.4-l4d2.zip -d superversus
+mv ${STEAMCMD_HOME}/superversus/cfg/*.cfg ${STEAMCMD_L4D2_CFG_DIR}/sourcemod
+mv ${STEAMCMD_HOME}/superversus/plugins/*.smx ${STEAMCMD_L4D2_SOURCEMOD_DIR}/plugins
+rm -rf ${STEAMCMD_HOME}/superversus
+rm superversus-1.5.4-l4d2.zip
+output_line "Finished downloading and installing SuperVersus plugin for Sourcemod"
 
 output_line "Adding Sourcemod admins..."
 cat ${STEAMCMD_MOUNT}/sourcemod/admins_simple_lines.ini >> ${STEAMCMD_L4D2_SOURCEMOD_DIR}/configs/admins_simple.ini
