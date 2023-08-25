@@ -2,15 +2,17 @@
 
 # Left 4 Dead 2 provisioning
 
+STEAMCMD_HOME="/home/vagrant"
 STEAMCMD_MOUNT="/mnt/data/left4dead2"
 STEAMCMD_MAP_START="c2m1_highway"
 STEAMCMD_PORT="27020"
-STEAMCMD_HOME="/home/vagrant"
+
 STEAMCMD_L4D2_DIR="${STEAMCMD_HOME}/l4d2_server"
 STEAMCMD_L4D2_ADDONS_DIR="${STEAMCMD_L4D2_DIR}/left4dead2/addons"
 STEAMCMD_L4D2_CFG_DIR="${STEAMCMD_L4D2_DIR}/left4dead2/cfg"
 STEAMCMD_L4D2_METAMODMOD_DIR="${STEAMCMD_L4D2_ADDONS_DIR}/metamod"
 STEAMCMD_L4D2_SOURCEMOD_DIR="${STEAMCMD_L4D2_ADDONS_DIR}/sourcemod"
+
 L4D2_GENERATED_SERVER_CFG="${STEAMCMD_HOME}/l4d2_server_generated.cfg"
 L4D2_SRCDS_MAX_PLAYERS=4
 
@@ -74,16 +76,20 @@ rm -rf sourcemod
 rm sourcemod-1.11.0-git6936-linux.tar.gz
 output_line "Finished downloading and installing Sourcemod"
 
-# https://forums.alliedmods.net/showthread.php?t=91132
-output_line "Downloading and installing Left 4 Downtown extension for Sourcemod..."
-wget ${DEPENDENCY_BASE_URL}/common/left4downtown-0.4.6.0-l4d2.zip
-unzip left4downtown-0.4.6.0-l4d2.zip -d left4downtown
-mv left4downtown/extensions/*.autoload ${STEAMCMD_L4D2_SOURCEMOD_DIR}/extensions
-mv left4downtown/extensions/*.so ${STEAMCMD_L4D2_SOURCEMOD_DIR}/extensions
-mv left4downtown/gamedata/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/gamedata
-rm -rf left4downtown
-rm left4downtown-0.4.6.0-l4d2.zip
-output_line "Finished downloading and installing Left 4 Downtown extension for Sourcemod"
+# https://forums.alliedmods.net/showthread.php?t=321696
+# Replacement for Left 4 Downtown which *REALLY* does not want to work on Linux now
+output_line "Downloading and installing Left 4 DHooks Direct plugin for Sourcemod..."
+wget ${DEPENDENCY_BASE_URL}/common/left4dhooks.zip
+unzip left4dhooks.zip -d left4dhooks
+mv left4dhooks/sourcemod/data/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/data
+mv left4dhooks/sourcemod/gamedata/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/gamedata
+mv left4dhooks/sourcemod/plugins/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/plugins
+mv left4dhooks/sourcemod/scripting/include/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/scripting/include
+mv left4dhooks/sourcemod/scripting/l4dd ${STEAMCMD_L4D2_SOURCEMOD_DIR}/scripting
+mv left4dhooks/sourcemod/scripting/*.sp ${STEAMCMD_L4D2_SOURCEMOD_DIR}/scripting
+rm -rf left4dhooks
+rm left4dhooks.zip
+output_line "Finished downloading and installing Left 4 DHooks Direct plugin for Sourcemod"
 
 # https://forums.alliedmods.net/showthread.php?p=830069
 output_line "Downloading and installing SuperVersus plugin for Sourcemod..."
