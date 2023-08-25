@@ -22,7 +22,7 @@ iptables-save
 output_line "Finished setting firewall rules"
 
 output_line "Installing steamcmd dependencies..."
-yum -y install glibc.i686 libstdc++.i686 wget
+yum -y install glibc.i686 libstdc++.i686 wget unzip
 output_line "Finished installing steamcmd dependencies"
 
 output_line "Finished base machine provisioning"

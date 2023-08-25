@@ -7,6 +7,9 @@ STEAMCMD_MAP_START="c2m1_highway"
 STEAMCMD_PORT="27020"
 STEAMCMD_HOME="/home/vagrant"
 STEAMCMD_L4D2_DIR="${STEAMCMD_HOME}/l4d2_server"
+STEAMCMD_L4D2_ADDONS_DIR="${STEAMCMD_L4D2_DIR}/left4dead2/addons"
+STEAMCMD_L4D2_METAMODMOD_DIR="${STEAMCMD_L4D2_ADDONS_DIR}/metamod"
+STEAMCMD_L4D2_SOURCEMOD_DIR="${STEAMCMD_L4D2_ADDONS_DIR}/sourcemod"
 L4D2_GENERATED_SERVER_CFG="${STEAMCMD_HOME}/l4d2_server_generated.cfg"
 L4D2_SRCDS_MAX_PLAYERS=4
 
@@ -51,7 +54,7 @@ output_line "Finished running steamcmd"
 output_line "Downloading and installing Metamod..."
 wget ${DEPENDENCY_BASE_URL}/common/mmsource-1.11.0-git1148-linux.tar.gz
 tar xf mmsource-1.11.0-git1148-linux.tar.gz
-mv ${STEAMCMD_HOME}/addons/* ${STEAMCMD_L4D2_DIR}/left4dead2/addons
+mv ${STEAMCMD_HOME}/addons/* ${STEAMCMD_L4D2_ADDONS_DIR}
 rmdir ${STEAMCMD_HOME}/addons
 output_line "Finished downloading and installing Metamod"
 
@@ -59,15 +62,26 @@ output_line "Finished downloading and installing Metamod"
 output_line "Downloading and installing Sourcemod..."
 wget ${DEPENDENCY_BASE_URL}/common/sourcemod-1.11.0-git6936-linux.tar.gz
 tar xf sourcemod-1.11.0-git6936-linux.tar.gz
-mv ${STEAMCMD_HOME}/addons/metamod/* ${STEAMCMD_L4D2_DIR}/left4dead2/addons/metamod
-mv ${STEAMCMD_HOME}/addons/sourcemod ${STEAMCMD_L4D2_DIR}/left4dead2/addons
+mv ${STEAMCMD_HOME}/addons/metamod/* ${STEAMCMD_L4D2_METAMODMOD_DIR}
+mv ${STEAMCMD_HOME}/addons/sourcemod ${STEAMCMD_L4D2_ADDONS_DIR}
 rm -rf ${STEAMCMD_HOME}/addons
 mv ${STEAMCMD_HOME}/cfg/sourcemod/* ${STEAMCMD_L4D2_DIR}/left4dead2/cfg/sourcemod
 rm -rf ${STEAMCMD_HOME}/cfg
 output_line "Finished downloading and installing Sourcemod"
 
+# https://forums.alliedmods.net/showthread.php?t=91132
+output_line "Downloading and installing Left 4 Downtown extension for Sourcemod..."
+wget ${DEPENDENCY_BASE_URL}/common/left4downtown-0.4.6.0-l4d2.zip
+unzip left4downtown-0.4.6.0-l4d2.zip -d left4downtown
+mv ${STEAMCMD_HOME}/left4downtown/extensions/*.autoload ${STEAMCMD_L4D2_SOURCEMOD_DIR}/extensions
+mv ${STEAMCMD_HOME}/left4downtown/extensions/*.so ${STEAMCMD_L4D2_SOURCEMOD_DIR}/extensions
+mv ${STEAMCMD_HOME}/left4downtown/gamedata/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/gamedata
+rm -rf ${STEAMCMD_HOME}/left4downtown
+rm left4downtown-0.4.6.0-l4d2.zip
+output_line "Finished downloading and installing Left 4 Downtown extension for Sourcemod"
+
 output_line "Adding Sourcemod admins..."
-cat ${STEAMCMD_MOUNT}/sourcemod/admins_simple_lines.ini >> ${STEAMCMD_L4D2_DIR}/left4dead2/addons/sourcemod/configs/admins_simple.ini
+cat ${STEAMCMD_MOUNT}/sourcemod/admins_simple_lines.ini >> ${STEAMCMD_L4D2_SOURCEMOD_DIR}/configs/admins_simple.ini
 output_line "Finished adding Sourcemod admins"
 
 # https://github.com/SmartlyDressedGames/Unturned-3.x-Community/issues/2305#issuecomment-785075753
