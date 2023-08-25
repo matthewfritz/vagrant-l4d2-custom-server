@@ -12,7 +12,7 @@ L4D2_SRCDS_MAX_PLAYERS=4
 
 # GitHub mirror of the necessary dependencies so we can provision in a consistent way and not worry about
 # our requisite configs, mods, etc. disappearing suddenly and breaking our server
-DEPENDENCY_BASE_URL="https://github.com/matthewfritz/l4d2-custom-server-dependencies/raw/master"
+DEPENDENCY_BASE_URL="https://github.com/matthewfritz/vagrant-l4d2-custom-server/raw/dependencies"
 
 output_line() {
     echo "[L4D2] $1"
