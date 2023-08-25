@@ -57,8 +57,8 @@ output_line "Downloading and installing Metamod..."
 mkdir metamod
 wget ${DEPENDENCY_BASE_URL}/common/mmsource-1.11.0-git1148-linux.tar.gz
 tar xf mmsource-1.11.0-git1148-linux.tar.gz -C metamod
-mv ${STEAMCMD_HOME}/metamod/addons/* ${STEAMCMD_L4D2_ADDONS_DIR}
-rm -rf ${STEAMCMD_HOME}/metamod
+mv metamod/addons/* ${STEAMCMD_L4D2_ADDONS_DIR}
+rm -rf metamod
 rm mmsource-1.11.0-git1148-linux.tar.gz
 output_line "Finished downloading and installing Metamod"
 
@@ -67,10 +67,10 @@ output_line "Downloading and installing Sourcemod..."
 mkdir sourcemod
 wget ${DEPENDENCY_BASE_URL}/common/sourcemod-1.11.0-git6936-linux.tar.gz
 tar xf sourcemod-1.11.0-git6936-linux.tar.gz -C sourcemod
-mv ${STEAMCMD_HOME}/sourcemod/addons/metamod/* ${STEAMCMD_L4D2_METAMODMOD_DIR}
-mv ${STEAMCMD_HOME}/sourcemod/addons/sourcemod ${STEAMCMD_L4D2_ADDONS_DIR}
-mv ${STEAMCMD_HOME}/sourcemod/cfg/sourcemod/* ${STEAMCMD_L4D2_CFG_DIR}/sourcemod
-rm -rf ${STEAMCMD_HOME}/sourcemod
+mv sourcemod/addons/metamod/* ${STEAMCMD_L4D2_METAMODMOD_DIR}
+mv sourcemod/addons/sourcemod ${STEAMCMD_L4D2_ADDONS_DIR}
+mv sourcemod/cfg/sourcemod/* ${STEAMCMD_L4D2_CFG_DIR}/sourcemod
+rm -rf sourcemod
 rm sourcemod-1.11.0-git6936-linux.tar.gz
 output_line "Finished downloading and installing Sourcemod"
 
@@ -78,10 +78,10 @@ output_line "Finished downloading and installing Sourcemod"
 output_line "Downloading and installing Left 4 Downtown extension for Sourcemod..."
 wget ${DEPENDENCY_BASE_URL}/common/left4downtown-0.4.6.0-l4d2.zip
 unzip left4downtown-0.4.6.0-l4d2.zip -d left4downtown
-mv ${STEAMCMD_HOME}/left4downtown/extensions/*.autoload ${STEAMCMD_L4D2_SOURCEMOD_DIR}/extensions
-mv ${STEAMCMD_HOME}/left4downtown/extensions/*.so ${STEAMCMD_L4D2_SOURCEMOD_DIR}/extensions
-mv ${STEAMCMD_HOME}/left4downtown/gamedata/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/gamedata
-rm -rf ${STEAMCMD_HOME}/left4downtown
+mv left4downtown/extensions/*.autoload ${STEAMCMD_L4D2_SOURCEMOD_DIR}/extensions
+mv left4downtown/extensions/*.so ${STEAMCMD_L4D2_SOURCEMOD_DIR}/extensions
+mv left4downtown/gamedata/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/gamedata
+rm -rf left4downtown
 rm left4downtown-0.4.6.0-l4d2.zip
 output_line "Finished downloading and installing Left 4 Downtown extension for Sourcemod"
 
@@ -89,9 +89,9 @@ output_line "Finished downloading and installing Left 4 Downtown extension for S
 output_line "Downloading and installing SuperVersus plugin for Sourcemod..."
 wget ${DEPENDENCY_BASE_URL}/common/superversus-1.5.4-l4d2.zip
 unzip superversus-1.5.4-l4d2.zip -d superversus
-mv ${STEAMCMD_HOME}/superversus/cfg/*.cfg ${STEAMCMD_L4D2_CFG_DIR}/sourcemod
-mv ${STEAMCMD_HOME}/superversus/plugins/*.smx ${STEAMCMD_L4D2_SOURCEMOD_DIR}/plugins
-rm -rf ${STEAMCMD_HOME}/superversus
+mv superversus/cfg/*.cfg ${STEAMCMD_L4D2_CFG_DIR}/sourcemod
+mv superversus/plugins/*.smx ${STEAMCMD_L4D2_SOURCEMOD_DIR}/plugins
+rm -rf superversus
 rm superversus-1.5.4-l4d2.zip
 output_line "Finished downloading and installing SuperVersus plugin for Sourcemod"
 
