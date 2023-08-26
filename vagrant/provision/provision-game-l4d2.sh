@@ -79,7 +79,7 @@ output_line "Finished downloading and installing Sourcemod"
 # https://forums.alliedmods.net/showthread.php?t=321696
 # Replacement for Left 4 Downtown which *REALLY* does not want to work on Linux now
 output_line "Downloading and installing Left 4 DHooks Direct plugin for Sourcemod..."
-wget ${DEPENDENCY_BASE_URL}/common/left4dhooks.zip
+wget ${DEPENDENCY_BASE_URL}/sourcemod/left4dhooks.zip
 unzip left4dhooks.zip -d left4dhooks
 mv left4dhooks/sourcemod/data/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/data
 mv left4dhooks/sourcemod/gamedata/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/gamedata
@@ -93,13 +93,25 @@ output_line "Finished downloading and installing Left 4 DHooks Direct plugin for
 
 # https://forums.alliedmods.net/showthread.php?p=830069
 output_line "Downloading and installing SuperVersus plugin for Sourcemod..."
-wget ${DEPENDENCY_BASE_URL}/common/superversus-1.5.4-l4d2.zip
+wget ${DEPENDENCY_BASE_URL}/sourcemod/superversus-1.5.4-l4d2.zip
 unzip superversus-1.5.4-l4d2.zip -d superversus
 mv superversus/cfg/*.cfg ${STEAMCMD_L4D2_CFG_DIR}/sourcemod
 mv superversus/plugins/*.smx ${STEAMCMD_L4D2_SOURCEMOD_DIR}/plugins
 rm -rf superversus
 rm superversus-1.5.4-l4d2.zip
 output_line "Finished downloading and installing SuperVersus plugin for Sourcemod"
+
+# https://forums.alliedmods.net/showthread.php?t=308708
+output_line "Downloading and installing Improved Automatic Campaign Switcher (ACS) plugin for Sourcemod..."
+wget ${DEPENDENCY_BASE_URL}/sourcemod/acs_v2.3.0.zip
+unzip acs_v2.3.0.zip -d acs
+mv acs/gamedata/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/gamedata
+mv acs/plugins/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/plugins
+cp -r acs/scripting/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/scripting
+cp -r acs/translations/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/translations
+rm -rf acs
+rm acs_v2.3.0.zip
+output_line "Finished downloading and installing Improved Automatic Campaign Switcher (ACS) plugin for Sourcemod"
 
 output_line "Adding Sourcemod admins..."
 cat ${STEAMCMD_MOUNT}/sourcemod/admins_simple_lines.ini >> ${STEAMCMD_L4D2_SOURCEMOD_DIR}/configs/admins_simple.ini
