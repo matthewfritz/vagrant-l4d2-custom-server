@@ -84,9 +84,7 @@ unzip left4dhooks.zip -d left4dhooks
 mv left4dhooks/sourcemod/data/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/data
 mv left4dhooks/sourcemod/gamedata/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/gamedata
 mv left4dhooks/sourcemod/plugins/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/plugins
-mv left4dhooks/sourcemod/scripting/include/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/scripting/include
-mv left4dhooks/sourcemod/scripting/l4dd ${STEAMCMD_L4D2_SOURCEMOD_DIR}/scripting
-mv left4dhooks/sourcemod/scripting/*.sp ${STEAMCMD_L4D2_SOURCEMOD_DIR}/scripting
+cp -r left4dhooks/sourcemod/scripting/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/scripting
 rm -rf left4dhooks
 rm left4dhooks.zip
 output_line "Finished downloading and installing Left 4 DHooks Direct plugin for Sourcemod"
