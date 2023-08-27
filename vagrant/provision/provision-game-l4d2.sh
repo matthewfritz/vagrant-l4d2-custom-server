@@ -29,7 +29,7 @@ output_line "Beginning Left 4 Dead 2 provisioning..."
 # On CentOS 7, steamcmd isn't within yum by default so we will install it manually
 # https://www.vultr.com/docs/how-to-install-steamcmd-on-your-vps#3__Install_Steam
 output_line "Installing steamcmd..."
-wget ${DEPENDENCY_BASE_URL}/common/steamcmd_linux.tar.gz
+wget ${DEPENDENCY_BASE_URL}/core/steamcmd_linux.tar.gz
 tar xf steamcmd_linux.tar.gz
 ./steamcmd.sh +quit
 rm steamcmd_linux.tar.gz
@@ -57,7 +57,7 @@ output_line "Finished running steamcmd"
 # https://wiki.alliedmods.net/Installing_Metamod:Source
 output_line "Downloading and installing Metamod..."
 mkdir metamod
-wget ${DEPENDENCY_BASE_URL}/common/mmsource-1.11.0-git1148-linux.tar.gz
+wget ${DEPENDENCY_BASE_URL}/core/mmsource-1.11.0-git1148-linux.tar.gz
 tar xf mmsource-1.11.0-git1148-linux.tar.gz -C metamod
 mv metamod/addons/* ${STEAMCMD_L4D2_ADDONS_DIR}
 rm -rf metamod
@@ -67,7 +67,7 @@ output_line "Finished downloading and installing Metamod"
 # https://wiki.alliedmods.net/Installing_SourceMod
 output_line "Downloading and installing Sourcemod..."
 mkdir sourcemod
-wget ${DEPENDENCY_BASE_URL}/common/sourcemod-1.11.0-git6936-linux.tar.gz
+wget ${DEPENDENCY_BASE_URL}/core/sourcemod-1.11.0-git6936-linux.tar.gz
 tar xf sourcemod-1.11.0-git6936-linux.tar.gz -C sourcemod
 mv sourcemod/addons/metamod/* ${STEAMCMD_L4D2_METAMODMOD_DIR}
 mv sourcemod/addons/sourcemod ${STEAMCMD_L4D2_ADDONS_DIR}
@@ -79,7 +79,7 @@ output_line "Finished downloading and installing Sourcemod"
 # https://forums.alliedmods.net/showthread.php?t=321696
 # Replacement for Left 4 Downtown which *REALLY* does not want to work on Linux now
 output_line "Downloading and installing Left 4 DHooks Direct plugin for Sourcemod..."
-wget ${DEPENDENCY_BASE_URL}/sourcemod/left4dhooks.zip
+wget ${DEPENDENCY_BASE_URL}/core/sourcemod/left4dhooks.zip
 unzip left4dhooks.zip -d left4dhooks
 mv left4dhooks/sourcemod/data/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/data
 mv left4dhooks/sourcemod/gamedata/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/gamedata
@@ -91,7 +91,7 @@ output_line "Finished downloading and installing Left 4 DHooks Direct plugin for
 
 # https://forums.alliedmods.net/showthread.php?p=830069
 output_line "Downloading and installing SuperVersus plugin for Sourcemod..."
-wget ${DEPENDENCY_BASE_URL}/sourcemod/superversus-1.5.4-l4d2.zip
+wget ${DEPENDENCY_BASE_URL}/core/sourcemod/superversus-1.5.4-l4d2.zip
 unzip superversus-1.5.4-l4d2.zip -d superversus
 mv superversus/cfg/*.cfg ${STEAMCMD_L4D2_CFG_DIR}/sourcemod
 mv superversus/plugins/*.smx ${STEAMCMD_L4D2_SOURCEMOD_DIR}/plugins
@@ -101,7 +101,7 @@ output_line "Finished downloading and installing SuperVersus plugin for Sourcemo
 
 # https://forums.alliedmods.net/showthread.php?t=308708
 output_line "Downloading and installing Improved Automatic Campaign Switcher (ACS) plugin for Sourcemod..."
-wget ${DEPENDENCY_BASE_URL}/sourcemod/acs_v2.3.0.zip
+wget ${DEPENDENCY_BASE_URL}/core/sourcemod/acs_v2.3.0.zip
 unzip acs_v2.3.0.zip -d acs
 mv acs/gamedata/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/gamedata
 mv acs/plugins/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/plugins
