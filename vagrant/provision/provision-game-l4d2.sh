@@ -28,7 +28,7 @@ output_line "Beginning Left 4 Dead 2 provisioning..."
 
 ##################################################################################
 #
-# STEAMCMD PROVISIONING
+# STEAMCMD PROVISIONING (CORE)
 #
 ##################################################################################
 
@@ -62,7 +62,7 @@ output_line "Finished running steamcmd"
 
 ##################################################################################
 #
-# METAMOD PROVISIONING
+# METAMOD PROVISIONING (CORE)
 #
 ##################################################################################
 
@@ -78,7 +78,7 @@ output_line "Finished downloading and installing Metamod"
 
 ##################################################################################
 #
-# SOURCEMOD PROVISIONING
+# SOURCEMOD PROVISIONING (CORE)
 #
 ##################################################################################
 
@@ -132,6 +132,23 @@ output_line "Finished downloading and installing Improved Automatic Campaign Swi
 output_line "Adding Sourcemod admins..."
 cat ${STEAMCMD_MOUNT}/sourcemod/admins_simple_lines.ini >> ${STEAMCMD_L4D2_SOURCEMOD_DIR}/configs/admins_simple.ini
 output_line "Finished adding Sourcemod admins"
+
+##################################################################################
+#
+# SOURCEMOD PROVISIONING (GAMEPLAY)
+#
+##################################################################################
+
+# https://forums.alliedmods.net/showthread.php?p=1623308
+output_line "Downloading and installing L4D Mutant Zombies gameplay plugin for Sourcemod..."
+wget ${DEPENDENCY_BASE_URL}/gameplay/sourcemod/l4d_mutant_zombies.zip
+unzip l4d_mutant_zombies.zip -d l4d_mutant_zombies
+mv l4d_mutant_zombies/addons/sourcemod/data/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/data
+mv l4d_mutant_zombies/addons/sourcemod/plugins/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/plugins
+mv l4d_mutant_zombies/addons/sourcemod/scripting/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/scripting
+rm -rf l4d_mutant_zombies
+rm l4d_mutant_zombies.zip
+output_line "Finished downloading and installing L4D Mutant Zombies gameplay plugin for Sourcemod"
 
 ##################################################################################
 #
