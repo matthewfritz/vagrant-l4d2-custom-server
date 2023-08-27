@@ -167,6 +167,22 @@ rm -rf l4d_explosive_chains_credit
 rm l4d_explosive_chains_credit.zip
 output_line "Finished downloading and installing L4D & L4D2 Explosive Chains Credit gameplay plugin for Sourcemod"
 
+# https://forums.alliedmods.net/showthread.php?t=302140
+output_line "Downloading and installing L4D & L4D2 Mutant Tanks gameplay plugin for Sourcemod..."
+output_line "AlliedModders URL: https://forums.alliedmods.net/showthread.php?t=302140"
+wget ${DEPENDENCY_BASE_URL}/gameplay/sourcemod/mutant_tanks-8.98.zip
+unzip mutant_tanks-8.98.zip -d mutant_tanks
+cp -r mutant_tanks/Mutant_Tanks-8.98/addons/sourcemod/data/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/data
+mv mutant_tanks/Mutant_Tanks-8.98/addons/sourcemod/gamedata/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/gamedata
+mv mutant_tanks/Mutant_Tanks-8.98/addons/sourcemod/mutant_tanks_updater.txt ${STEAMCMD_L4D2_SOURCEMOD_DIR}
+cp -r mutant_tanks/Mutant_Tanks-8.98/addons/sourcemod/plugins/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/plugins
+cp -r mutant_tanks/Mutant_Tanks-8.98/addons/sourcemod/scripting/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/scripting
+cp -r mutant_tanks/Mutant_Tanks-8.98/addons/sourcemod/translations/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/translations
+mv mutant_tanks/Mutant_Tanks-8.98/cfg/sourcemod/*.cfg ${STEAMCMD_L4D2_CFG_DIR}/sourcemod
+rm -rf mutant_tanks
+rm mutant_tanks-8.98.zip
+output_line "Finished downloading and installing L4D & L4D2 Mutant Tanks gameplay plugin for Sourcemod"
+
 ##################################################################################
 #
 # SOURCE DEDICATED SERVER AND UTILITY SCRIPT PROVISIONING
