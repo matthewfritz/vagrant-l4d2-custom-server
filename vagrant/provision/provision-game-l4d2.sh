@@ -14,7 +14,7 @@ STEAMCMD_L4D2_METAMODMOD_DIR="${STEAMCMD_L4D2_ADDONS_DIR}/metamod"
 STEAMCMD_L4D2_SOURCEMOD_DIR="${STEAMCMD_L4D2_ADDONS_DIR}/sourcemod"
 
 L4D2_GENERATED_SERVER_CFG="${STEAMCMD_HOME}/l4d2_server_generated.cfg"
-L4D2_SRCDS_MAX_PLAYERS=4
+L4D2_SRCDS_MAX_PLAYERS=8
 
 # GitHub mirror of the necessary dependencies so we can provision in a consistent way and not worry about
 # our requisite configs, mods, etc. disappearing suddenly and breaking our server
@@ -25,6 +25,12 @@ output_line() {
 }
 
 output_line "Beginning Left 4 Dead 2 provisioning..."
+
+##################################################################################
+#
+# STEAMCMD PROVISIONING
+#
+##################################################################################
 
 # On CentOS 7, steamcmd isn't within yum by default so we will install it manually
 # https://www.vultr.com/docs/how-to-install-steamcmd-on-your-vps#3__Install_Steam
@@ -54,6 +60,12 @@ output_line "Running steamcmd with the custom update script to download and inst
 ./steamcmd.sh +runscript ${STEAMCMD_HOME}/steamcmd_update_l4d2.txt
 output_line "Finished running steamcmd"
 
+##################################################################################
+#
+# METAMOD PROVISIONING
+#
+##################################################################################
+
 # https://wiki.alliedmods.net/Installing_Metamod:Source
 output_line "Downloading and installing Metamod..."
 mkdir metamod
@@ -63,6 +75,12 @@ mv metamod/addons/* ${STEAMCMD_L4D2_ADDONS_DIR}
 rm -rf metamod
 rm mmsource-1.11.0-git1148-linux.tar.gz
 output_line "Finished downloading and installing Metamod"
+
+##################################################################################
+#
+# SOURCEMOD PROVISIONING
+#
+##################################################################################
 
 # https://wiki.alliedmods.net/Installing_SourceMod
 output_line "Downloading and installing Sourcemod..."
@@ -114,6 +132,12 @@ output_line "Finished downloading and installing Improved Automatic Campaign Swi
 output_line "Adding Sourcemod admins..."
 cat ${STEAMCMD_MOUNT}/sourcemod/admins_simple_lines.ini >> ${STEAMCMD_L4D2_SOURCEMOD_DIR}/configs/admins_simple.ini
 output_line "Finished adding Sourcemod admins"
+
+##################################################################################
+#
+# SOURCE DEDICATED SERVER AND UTILITY SCRIPT PROVISIONING
+#
+##################################################################################
 
 # https://github.com/SmartlyDressedGames/Unturned-3.x-Community/issues/2305#issuecomment-785075753
 output_line "Making symlink to steamclient.so..."
