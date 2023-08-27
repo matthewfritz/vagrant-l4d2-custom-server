@@ -145,7 +145,7 @@ output_line "Finished adding Sourcemod admins"
 ##################################################################################
 
 # https://forums.alliedmods.net/showthread.php?p=1623308
-output_line "Downloading and installing L4D Mutant Zombies gameplay plugin for Sourcemod..."
+output_line "Downloading and installing L4D & L4D2 Mutant Zombies gameplay plugin for Sourcemod..."
 output_line "AlliedModders URL: https://forums.alliedmods.net/showthread.php?p=1623308"
 wget ${DEPENDENCY_BASE_URL}/gameplay/sourcemod/l4d_mutant_zombies.zip
 unzip l4d_mutant_zombies.zip -d l4d_mutant_zombies
@@ -154,7 +154,18 @@ mv l4d_mutant_zombies/addons/sourcemod/plugins/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/
 mv l4d_mutant_zombies/addons/sourcemod/scripting/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/scripting
 rm -rf l4d_mutant_zombies
 rm l4d_mutant_zombies.zip
-output_line "Finished downloading and installing L4D Mutant Zombies gameplay plugin for Sourcemod"
+output_line "Finished downloading and installing L4D & L4D2 Mutant Zombies gameplay plugin for Sourcemod"
+
+# https://forums.alliedmods.net/showthread.php?t=334655
+output_line "Downloading and installing L4D & L4D2 Explosive Chains Credit gameplay plugin for Sourcemod..."
+output_line "AlliedModders URL: https://forums.alliedmods.net/showthread.php?t=334655"
+wget ${DEPENDENCY_BASE_URL}/gameplay/sourcemod/l4d_explosive_chains_credit.zip
+unzip l4d_explosive_chains_credit.zip -d l4d_explosive_chains_credit
+mv l4d_explosive_chains_credit/addons/sourcemod/plugins/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/plugins
+mv l4d_explosive_chains_credit/addons/sourcemod/scripting/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/scripting
+rm -rf l4d_explosive_chains_credit
+rm l4d_explosive_chains_credit.zip
+output_line "Finished downloading and installing L4D & L4D2 Explosive Chains Credit gameplay plugin for Sourcemod"
 
 ##################################################################################
 #
