@@ -68,6 +68,7 @@ output_line "Finished running steamcmd"
 
 # https://wiki.alliedmods.net/Installing_Metamod:Source
 output_line "Downloading and installing Metamod..."
+output_line "AlliedModders URL: https://wiki.alliedmods.net/Installing_Metamod:Source"
 mkdir metamod
 wget ${DEPENDENCY_BASE_URL}/core/mmsource-1.11.0-git1148-linux.tar.gz
 tar xf mmsource-1.11.0-git1148-linux.tar.gz -C metamod
@@ -84,6 +85,7 @@ output_line "Finished downloading and installing Metamod"
 
 # https://wiki.alliedmods.net/Installing_SourceMod
 output_line "Downloading and installing Sourcemod..."
+output_line "AlliedModders URL: https://wiki.alliedmods.net/Installing_SourceMod"
 mkdir sourcemod
 wget ${DEPENDENCY_BASE_URL}/core/sourcemod-1.11.0-git6936-linux.tar.gz
 tar xf sourcemod-1.11.0-git6936-linux.tar.gz -C sourcemod
@@ -97,6 +99,7 @@ output_line "Finished downloading and installing Sourcemod"
 # https://forums.alliedmods.net/showthread.php?t=321696
 # Replacement for Left 4 Downtown which *REALLY* does not want to work on Linux now
 output_line "Downloading and installing Left 4 DHooks Direct plugin for Sourcemod..."
+output_line "AlliedModders URL: https://forums.alliedmods.net/showthread.php?t=321696"
 wget ${DEPENDENCY_BASE_URL}/core/sourcemod/left4dhooks.zip
 unzip left4dhooks.zip -d left4dhooks
 mv left4dhooks/sourcemod/data/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/data
@@ -109,6 +112,7 @@ output_line "Finished downloading and installing Left 4 DHooks Direct plugin for
 
 # https://forums.alliedmods.net/showthread.php?p=830069
 output_line "Downloading and installing SuperVersus plugin for Sourcemod..."
+output_line "AlliedModders URL: https://forums.alliedmods.net/showthread.php?p=830069"
 wget ${DEPENDENCY_BASE_URL}/core/sourcemod/superversus-1.5.4-l4d2.zip
 unzip superversus-1.5.4-l4d2.zip -d superversus
 mv superversus/cfg/*.cfg ${STEAMCMD_L4D2_CFG_DIR}/sourcemod
@@ -119,6 +123,7 @@ output_line "Finished downloading and installing SuperVersus plugin for Sourcemo
 
 # https://forums.alliedmods.net/showthread.php?t=308708
 output_line "Downloading and installing Improved Automatic Campaign Switcher (ACS) plugin for Sourcemod..."
+output_line "AlliedModders URL: https://forums.alliedmods.net/showthread.php?t=308708"
 wget ${DEPENDENCY_BASE_URL}/core/sourcemod/acs_v2.3.0.zip
 unzip acs_v2.3.0.zip -d acs
 mv acs/gamedata/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/gamedata
@@ -141,6 +146,7 @@ output_line "Finished adding Sourcemod admins"
 
 # https://forums.alliedmods.net/showthread.php?p=1623308
 output_line "Downloading and installing L4D Mutant Zombies gameplay plugin for Sourcemod..."
+output_line "AlliedModders URL: https://forums.alliedmods.net/showthread.php?p=1623308"
 wget ${DEPENDENCY_BASE_URL}/gameplay/sourcemod/l4d_mutant_zombies.zip
 unzip l4d_mutant_zombies.zip -d l4d_mutant_zombies
 mv l4d_mutant_zombies/addons/sourcemod/data/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/data
