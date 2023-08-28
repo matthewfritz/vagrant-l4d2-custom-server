@@ -205,6 +205,32 @@ output_line "Finished downloading and installing L4D & L4D2 Mutant Tanks gamepla
 
 ##################################################################################
 #
+# CAMPAIGN PROVISIONING
+#
+##################################################################################
+
+# https://www.gamemaps.com/details/2520
+output_line "Downloading and installing Zombies of the Caribbean campaign..."
+output_line "GameMaps URL: https://www.gamemaps.com/details/2520"
+wget ${DEPENDENCY_BASE_URL}/campaigns/l4d2_zombies_of_the_caribbean_2.zip
+unzip l4d2_zombies_of_the_caribbean_2.zip -d l4d2_zombies_of_the_caribbean_2
+mv l4d2_zombies_of_the_caribbean_2/*.vpk ${STEAMCMD_L4D2_ADDONS_DIR}
+rm -rf l4d2_zombies_of_the_caribbean_2
+rm l4d2_zombies_of_the_caribbean_2.zip
+output_line "Finished downloading and installing Zombies of the Caribbean campaign"
+
+# https://www.gamemaps.com/details/2613
+output_line "Downloading and installing Indiana Jones and the Temple of Zombies campaign..."
+output_line "GameMaps URL: https://www.gamemaps.com/details/2613"
+wget ${DEPENDENCY_BASE_URL}/campaigns/l4d2_indiana_jones_and_the_temple_of_zombies_3.zip
+unzip l4d2_indiana_jones_and_the_temple_of_zombies_3.zip -d l4d2_indiana_jones_and_the_temple_of_zombies_3
+mv l4d2_indiana_jones_and_the_temple_of_zombies_3/*.vpk ${STEAMCMD_L4D2_ADDONS_DIR}
+rm -rf l4d2_indiana_jones_and_the_temple_of_zombies_3
+rm l4d2_indiana_jones_and_the_temple_of_zombies_3.zip
+output_line "Finished downloading and installing Indiana Jones and the Temple of Zombies campaign"
+
+##################################################################################
+#
 # SOURCE DEDICATED SERVER AND UTILITY SCRIPT PROVISIONING
 #
 ##################################################################################
@@ -251,5 +277,20 @@ output_line "Creating Left 4 Dead 2 server update script..."
 echo "${STEAMCMD_HOME}/steamcmd.sh +runscript ${STEAMCMD_HOME}/steamcmd_update_l4d2.txt" > ${STEAMCMD_HOME}/update_l4d2.sh
 chmod +x ${STEAMCMD_HOME}/update_l4d2.sh
 output_line "Finished creating update script"
+
+##################################################################################
+#
+# FINISHING UP
+#
+##################################################################################
+
+output_line
+output_line "Download and install the following campaigns as well to complete the server installation"
+output_line "since we currently cannot do that automatically:"
+output_line
+output_line "Journey to Splash Mountain: https://www.gamemaps.com/details/6084"
+output_line "Dark Carnival Remix: https://www.gamemaps.com/details/20723"
+output_line "Dead Before Dawn DC: https://www.gamemaps.com/details/2268"
+output_line
 
 output_line "Finished Left 4 Dead 2 provisioning"
