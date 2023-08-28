@@ -290,7 +290,36 @@ output_line "since we currently cannot do that automatically:"
 output_line
 output_line "Journey to Splash Mountain: https://www.gamemaps.com/details/6084"
 output_line "Dark Carnival Remix: https://www.gamemaps.com/details/20723"
-output_line "Dead Before Dawn DC: https://www.gamemaps.com/details/2268"
+output_line "Dead Before Dawn DC: https://www.gamemaps.com/details/2268 (optional)"
+output_line
+output_line "Make sure you restart the server between installations for the maps to be recognized in ACS"
 output_line
 
 output_line "Finished Left 4 Dead 2 provisioning"
+
+# ACS output for the custom campaigns in SRCDS server console for reference to aid in its configuration:
+#
+# 15.ZombieCaribbean <Missing localization> = zombie_caribbean -> zombie_caribbean (1 maps)
+# 16.IndianaJones <Missing localization> = indiana_adventure -> indiana_adventure_whole (4 maps)
+# 17.DarkCarnivalRemix <Missing localization> = dkr_m1_motel -> dkr_m5_stadium (5 maps)
+# 18.Journey To Splash Mountain (JourneyToSplashMountain) = splash1 -> splash5 (5 maps)
+#
+# Additional output of the "maps *" command in the SRCDS server console after everything is installed
+# should look like this to show that the maps in the new campaigns are recognized:
+#
+# PENDING:   (fs) dkr_m1_motel.bsp
+# PENDING:   (fs) dkr_m2_carnival.bsp
+# PENDING:   (fs) dkr_m3_tunneloflove.bsp
+# PENDING:   (fs) dkr_m4_ferris.bsp
+# PENDING:   (fs) dkr_m5_stadium.bsp
+# PENDING:   (fs) indiana_adventure.bsp
+# PENDING:   (fs) indiana_adventure2.bsp
+# PENDING:   (fs) indiana_adventure3.bsp
+# PENDING:   (fs) indiana_adventure_whole.bsp
+# PENDING:   (fs) splash1.bsp
+# PENDING:   (fs) splash2.bsp
+# PENDING:   (fs) splash3.bsp
+# PENDING:   (fs) splash4.bsp
+# PENDING:   (fs) splash5.bsp
+# PENDING:   (fs) splash6.bsp
+# PENDING:   (fs) zombie_caribbean.bsp
