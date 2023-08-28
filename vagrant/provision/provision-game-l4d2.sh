@@ -292,7 +292,10 @@ output_line "Journey to Splash Mountain: https://www.gamemaps.com/details/6084"
 output_line "Dark Carnival Remix: https://www.gamemaps.com/details/20723"
 output_line "Dead Before Dawn DC: https://www.gamemaps.com/details/2268 (optional)"
 output_line
-output_line "Make sure you restart the server between installations for the maps to be recognized in ACS"
+output_line "Unzip the archives and add the .vpk file(s) to the following directory to use the campaigns:"
+output_line "${STEAMCMD_L4D2_ADDONS_DIR}"
+output_line
+output_line "Make sure you restart the L4D2 server process between installations for them to be recognized in ACS"
 output_line
 
 output_line "Finished Left 4 Dead 2 provisioning"
