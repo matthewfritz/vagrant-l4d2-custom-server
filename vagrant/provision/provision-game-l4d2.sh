@@ -121,6 +121,17 @@ rm -rf superversus
 rm superversus-1.5.4-l4d2.zip
 output_line "Finished downloading and installing SuperVersus plugin for Sourcemod"
 
+# https://forums.alliedmods.net/showthread.php?t=298649
+output_line "Downloading and installing L4D & L4D2 ThirdPersonShoulder_Detect gameplay plugin for Sourcemod..."
+output_line "AlliedModders URL: https://forums.alliedmods.net/showthread.php?t=298649"
+wget ${DEPENDENCY_BASE_URL}/core/sourcemod/l4d_third_person_shoulder_detect.zip
+unzip l4d_third_person_shoulder_detect.zip -d l4d_third_person_shoulder_detect
+mv l4d_third_person_shoulder_detect/addons/sourcemod/plugins/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/plugins
+cp -r l4d_third_person_shoulder_detect/addons/sourcemod/scripting/* ${STEAMCMD_L4D2_SOURCEMOD_DIR}/scripting
+rm -rf l4d_third_person_shoulder_detect
+rm l4d_third_person_shoulder_detect.zip
+output_line "Finished downloading and installing L4D & L4D2 ThirdPersonShoulder_Detect gameplay plugin for Sourcemod"
+
 # https://forums.alliedmods.net/showthread.php?t=308708
 output_line "Downloading and installing Improved Automatic Campaign Switcher (ACS) plugin for Sourcemod..."
 output_line "AlliedModders URL: https://forums.alliedmods.net/showthread.php?t=308708"
