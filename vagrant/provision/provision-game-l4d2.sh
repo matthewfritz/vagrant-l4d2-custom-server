@@ -68,6 +68,7 @@ output_line "Finished running steamcmd"
 
 # https://wiki.alliedmods.net/Installing_Metamod:Source
 output_line "Downloading and installing Metamod..."
+output_line "Version: 1.11.0.1148 [26-Jun-2022]"
 output_line "AlliedModders URL: https://wiki.alliedmods.net/Installing_Metamod:Source"
 mkdir metamod
 wget ${DEPENDENCY_BASE_URL}/core/mmsource-1.11.0-git1148-linux.tar.gz
@@ -85,6 +86,7 @@ output_line "Finished downloading and installing Metamod"
 
 # https://wiki.alliedmods.net/Installing_SourceMod
 output_line "Downloading and installing Sourcemod..."
+output_line "Version: 1.11.0.6936 [25-Jul-2023]"
 output_line "AlliedModders URL: https://wiki.alliedmods.net/Installing_SourceMod"
 mkdir sourcemod
 wget ${DEPENDENCY_BASE_URL}/core/sourcemod-1.11.0-git6936-linux.tar.gz
@@ -99,6 +101,7 @@ output_line "Finished downloading and installing Sourcemod"
 # https://forums.alliedmods.net/showthread.php?t=321696
 # Replacement for Left 4 Downtown which *REALLY* does not want to work on Linux now
 output_line "Downloading and installing Left 4 DHooks Direct plugin for Sourcemod..."
+output_line "Version: 1.135 [18-Aug-2023]"
 output_line "AlliedModders URL: https://forums.alliedmods.net/showthread.php?t=321696"
 wget ${DEPENDENCY_BASE_URL}/core/sourcemod/left4dhooks.zip
 unzip left4dhooks.zip -d left4dhooks
@@ -112,6 +115,7 @@ output_line "Finished downloading and installing Left 4 DHooks Direct plugin for
 
 # https://forums.alliedmods.net/showthread.php?p=830069
 output_line "Downloading and installing SuperVersus plugin for Sourcemod..."
+output_line "Version: 1.5.4 [06-Dec-2009]"
 output_line "AlliedModders URL: https://forums.alliedmods.net/showthread.php?p=830069"
 wget ${DEPENDENCY_BASE_URL}/core/sourcemod/superversus-1.5.4-l4d2.zip
 unzip superversus-1.5.4-l4d2.zip -d superversus
@@ -123,6 +127,7 @@ output_line "Finished downloading and installing SuperVersus plugin for Sourcemo
 
 # https://forums.alliedmods.net/showthread.php?t=298649
 output_line "Downloading and installing L4D & L4D2 ThirdPersonShoulder_Detect gameplay plugin for Sourcemod..."
+output_line "Version: 1.5.3 [06-Aug-2020]"
 output_line "AlliedModders URL: https://forums.alliedmods.net/showthread.php?t=298649"
 wget ${DEPENDENCY_BASE_URL}/core/sourcemod/l4d_third_person_shoulder_detect.zip
 unzip l4d_third_person_shoulder_detect.zip -d l4d_third_person_shoulder_detect
@@ -134,6 +139,7 @@ output_line "Finished downloading and installing L4D & L4D2 ThirdPersonShoulder_
 
 # https://forums.alliedmods.net/showthread.php?t=308708
 output_line "Downloading and installing Improved Automatic Campaign Switcher (ACS) plugin for Sourcemod..."
+output_line "Version: 2.3.0 [25-Oct-2020]"
 output_line "AlliedModders URL: https://forums.alliedmods.net/showthread.php?t=308708"
 wget ${DEPENDENCY_BASE_URL}/core/sourcemod/acs_v2.3.0.zip
 unzip acs_v2.3.0.zip -d acs
@@ -157,6 +163,7 @@ output_line "Finished adding Sourcemod admins"
 
 # https://forums.alliedmods.net/showthread.php?p=1623308
 output_line "Downloading and installing L4D & L4D2 Mutant Zombies gameplay plugin for Sourcemod..."
+output_line "Version: 1.2.7 [19-Feb-2023]"
 output_line "AlliedModders URL: https://forums.alliedmods.net/showthread.php?p=1623308"
 wget ${DEPENDENCY_BASE_URL}/gameplay/sourcemod/l4d_mutant_zombies.zip
 unzip l4d_mutant_zombies.zip -d l4d_mutant_zombies
@@ -169,6 +176,7 @@ output_line "Finished downloading and installing L4D & L4D2 Mutant Zombies gamep
 
 # https://forums.alliedmods.net/showthread.php?t=334655
 output_line "Downloading and installing L4D & L4D2 Explosive Chains Credit gameplay plugin for Sourcemod..."
+output_line "Version: 1.3 [26-Nov-2021]"
 output_line "AlliedModders URL: https://forums.alliedmods.net/showthread.php?t=334655"
 wget ${DEPENDENCY_BASE_URL}/gameplay/sourcemod/l4d_explosive_chains_credit.zip
 unzip l4d_explosive_chains_credit.zip -d l4d_explosive_chains_credit
@@ -180,6 +188,7 @@ output_line "Finished downloading and installing L4D & L4D2 Explosive Chains Cre
 
 # https://forums.alliedmods.net/showthread.php?t=302140
 output_line "Downloading and installing L4D & L4D2 Mutant Tanks gameplay plugin for Sourcemod..."
+output_line "Version: 8.98 [10-Aug-2023]"
 output_line "AlliedModders URL: https://forums.alliedmods.net/showthread.php?t=302140"
 wget ${DEPENDENCY_BASE_URL}/gameplay/sourcemod/mutant_tanks-8.98.zip
 unzip mutant_tanks-8.98.zip -d mutant_tanks
